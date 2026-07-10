@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="EmbroideryManagement/App.axaml" value="EmbroideryManagement/EmbroideryManagement.csproj" />
+        <entry key="EmbroideryManagement/Views/MainWindow.axaml" value="EmbroideryManagement/EmbroideryManagement.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
