@@ -4,6 +4,7 @@
     <option name="projectPerEditor">
       <map>
         <entry key="EmbroideryManagement/App.axaml" value="EmbroideryManagement/EmbroideryManagement.csproj" />
+        <entry key="EmbroideryManagement/Controls/TagChip.axaml" value="EmbroideryManagement/EmbroideryManagement.csproj" />
         <entry key="EmbroideryManagement/Views/AllPatternsView.axaml" value="EmbroideryManagement/EmbroideryManagement.csproj" />
         <entry key="EmbroideryManagement/Views/CollectionsView.axaml" value="EmbroideryManagement/EmbroideryManagement.csproj" />
         <entry key="EmbroideryManagement/Views/MainWindow.axaml" value="EmbroideryManagement/EmbroideryManagement.csproj" />

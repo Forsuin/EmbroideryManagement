@@ -1,0 +1,82 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:EmbroideryManagement.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="EmbroideryManagement.Controls.TagChip">
+
+    <Button Classes="chip"
+            Command="{Binding $parent[controls:TagChip].Command}"
+            CommandParameter="{Binding $parent[controls:TagChip].CommandParameter}">
+        <StackPanel Orientation="Horizontal" Spacing="5">
+            <TextBlock x:Name="PrefixGlyph" FontSize="11" IsVisible="False" VerticalAlignment="Center" />
+            <TextBlock x:Name="LabelText" FontSize="12.5" FontWeight="Medium"
+                       Text="{Binding $parent[controls:TagChip].Label}" />
+            <TextBlock FontSize="10" Opacity="0.7" VerticalAlignment="Center"
+                       FontFamily="JetBrains Mono, Consolas, monospace"
+                       Text="{Binding $parent[controls:TagChip].Count}"
+                       IsVisible="{Binding $parent[controls:TagChip].ShowCount}" />
+        </StackPanel>
+    </Button>
+
+    <UserControl.Styles>
+
+        <!-- neutral -->
+        <Style Selector="Button.chip">
+            <Setter Property="Background" Value="#fdfdfb" />
+            <Setter Property="BorderBrush" Value="#dcdacd" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="Padding" Value="11,5" />
+            <Setter Property="Foreground" Value="#4a4a40" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+
+        <!-- include -->
+        <Style Selector="controls|TagChip:include Button.chip">
+            <Setter Property="Background" Value="#eef3e8" />
+            <Setter Property="BorderBrush" Value="#9db584" />
+            <Setter Property="Foreground" Value="#45602e" />
+        </Style>
+        <Style Selector="controls|TagChip:include TextBlock#PrefixGlyph">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Text" Value="✓" />
+        </Style>
+
+        <!-- exclude -->
+        <Style Selector="controls|TagChip:exclude Button.chip">
+            <Setter Property="Background" Value="#f9e9e7" />
+            <Setter Property="BorderBrush" Value="#cf9089" />
+            <Setter Property="Foreground" Value="#8c3a32" />
+        </Style>
+        <Style Selector="controls|TagChip:exclude TextBlock#PrefixGlyph">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Text" Value="✕" />
+        </Style>
+        <Style Selector="controls|TagChip:exclude TextBlock#LabelText">
+            <Setter Property="TextDecorations" Value="Strikethrough" />
+        </Style>
+
+        <!-- Fluent's :pointerover recolors the template ContentPresenter directly,
+             so restate each state's palette there; neutral hover goes gold-border -->
+        <Style Selector="Button.chip:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#fdfdfb" />
+            <Setter Property="BorderBrush" Value="#c9971f" />
+            <Setter Property="Foreground" Value="#4a4a40" />
+        </Style>
+        <Style
+            Selector="controls|TagChip:include Button.chip:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#eef3e8" />
+            <Setter Property="BorderBrush" Value="#9db584" />
+            <Setter Property="Foreground" Value="#45602e" />
+        </Style>
+        <Style
+            Selector="controls|TagChip:exclude Button.chip:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#f9e9e7" />
+            <Setter Property="BorderBrush" Value="#cf9089" />
+            <Setter Property="Foreground" Value="#8c3a32" />
+        </Style>
+
+    </UserControl.Styles>
+</UserControl>

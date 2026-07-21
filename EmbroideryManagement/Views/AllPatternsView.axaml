@@ -3,8 +3,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:EmbroideryManagement.ViewModels"
+             xmlns:controls="using:EmbroideryManagement.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="EmbroideryManagement.Views.AllPatternsView"
              x:DataType="vm:AllPatternsViewModel">
-    <TextBlock Text="{Binding Title}" FontSize="22" Margin="26"/>
+
+    <Grid ColumnDefinitions="264, *" ShowGridLines="True">
+        <Border Grid.Column="0"
+                Background="#fdfdfb"
+                BorderBrush="#e3e1d6"
+                BorderThickness="0,0,1,0"
+                Padding="18">
+            <Grid RowDefinitions="Auto, Auto, *, Auto" ShowGridLines="True">
+
+                <!-- row 0: filter presets, later -->
+
+                <!-- row 1: tags -->
+                <StackPanel Grid.Row="1" Spacing="9">
+                    <TextBlock Text="TAGS"
+                               FontSize="11" FontWeight="SemiBold"
+                               LetterSpacing="1.3"
+                               Foreground="#85857a" />
+                    <ItemsControl ItemsSource="{Binding Tags}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel ItemSpacing="7" LineSpacing="7" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="vm:TagChipViewModel">
+                                <controls:TagChip Label="{Binding Name}"
+                                                  Count="{Binding Count}"
+                                                  State="{Binding State}"
+                                                  Command="{Binding ToggleCommand}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" RowDefinitions="Auto, *" Margin="24, 18, 24, 0" ShowGridLines="True" />
+    </Grid>
+
 </UserControl>
